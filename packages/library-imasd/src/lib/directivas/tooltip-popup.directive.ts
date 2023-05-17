@@ -1,8 +1,8 @@
-import { Directive, ElementRef, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnDestroy  } from '@angular/core';
 @Directive({
-  selector: '[tooltippopup]',
+  selector: '[rctToolTipPopup]',
 })
-export class TooltipPopupDirective implements OnInit, OnDestroy {
+export class TooltipPopupDirective implements  OnDestroy {
   @Input() tooltippopup = ''; 
   @Input() timeWait = 200; 
   
@@ -11,7 +11,7 @@ export class TooltipPopupDirective implements OnInit, OnDestroy {
 
   constructor(private el: ElementRef) {
   }
-  ngOnInit(): void {}
+  
 
   ngOnDestroy(): void {
     if (this.popup) {

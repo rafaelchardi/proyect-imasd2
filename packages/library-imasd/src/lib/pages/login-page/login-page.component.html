@@ -1,0 +1,26 @@
+<mat-card  class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+<br>
+    <mat-card-content >
+        <form  [formGroup]="myForm"(ngSubmit)="login()">
+        <div class="row justify-content-center">
+           
+            <mat-form-field rctControlError class="col-12">
+                  <mat-label>{{'email' | translate}}</mat-label>
+                 <input style="margin-top: 1em;" placeholder="Email" matInput formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field appControlerror class="col-12">
+                <mat-label>{{'password' | translate}}</mat-label>
+                <input style="margin-top: 1em;" placeholder="Password" matInput type="password" formControlName="password">
+              </mat-form-field>
+              
+        </div>  
+            <mat-card-actions align="end">
+                <button [disabled]="myForm.invalid"  type="submit" mat-button>Acceptar</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

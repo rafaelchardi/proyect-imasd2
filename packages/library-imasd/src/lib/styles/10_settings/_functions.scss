@@ -1,0 +1,7 @@
+$size-base-bowser: 16;
+
+@use 'sass:math';
+
+@function pxResp($value: 1) {
+  @return math.div($value, $size-base-bowser) + rem;
+}

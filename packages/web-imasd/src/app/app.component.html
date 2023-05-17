@@ -1,3 +1,7 @@
+<rct-header *ngIf="autorizado()" ></rct-header>
+<rct-menu  *ngIf="autorizado()"></rct-menu>
+<div [ngStyle]="{'margin-left':autorizado() ? '100px' : '0px' }">
+    <router-outlet></router-outlet>
+</div>
 
-<router-outlet></router-outlet>
-<lib-loading *ngIf="isLoading"></lib-loading>
+<rct-loading *ngIf="isLoading"><rct-loading>

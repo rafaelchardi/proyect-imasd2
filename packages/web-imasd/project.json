@@ -17,11 +17,17 @@
         "tsConfig": "packages/web-imasd/tsconfig.app.json",
         "assets": [
           "packages/web-imasd/src/favicon.ico",
-          "packages/web-imasd/src/assets"
+          "packages/web-imasd/src/assets",
+          {
+            "input": "packages/library-imasd/src/lib/assets",
+            "glob": "**/*",
+            "output": "assetslib"
+          }
         ],
         "styles": [
           "packages/web-imasd/src/styles.scss",
-          "node_modules/bootstrap/dist/css/bootstrap.min.css"
+          "node_modules/bootstrap/dist/css/bootstrap.min.css",
+          "node_modules/@imasd/libraryImasd/src/lib/styles/index.scss"
         ],
         "scripts": [
           "node_modules/jquery/dist/jquery.min.js",

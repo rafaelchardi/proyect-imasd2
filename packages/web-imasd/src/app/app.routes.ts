@@ -1,5 +1,5 @@
-import { Route } from '@angular/router';
-import { isAuthenticatedGuard, isNotAuthenticatedGuard } from './auth/guards';
+import { isAuthenticatedGuard, isNotAuthenticatedGuard } from '@imasd/libraryImasd';
+
 
 export const appRoutes = [
 
@@ -12,6 +12,11 @@ export const appRoutes = [
       path: 'dashboard',
       canActivate: [ isAuthenticatedGuard ],
       loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardModule ),
+    },
+    {
+      path: 'client',
+       canActivate: [ isAuthenticatedGuard ],
+      loadChildren: () => import('./ventas/client.module').then( m => m.ClientModule ),
     },
     {
       path: '**',

@@ -1,8 +1,6 @@
 import { Component, computed, effect, inject } from '@angular/core';
-import { AuthService } from './auth/services/auth.service';
 import { Router } from '@angular/router';
-import { AuthStatus } from './auth/interfaces';
-import { StoreService } from '@imasd/libraryImasd';
+import { AuthService, AuthStatus, StoreService } from '@imasd/libraryImasd';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +10,7 @@ import { StoreService } from '@imasd/libraryImasd';
 export class AppComponent {
   title = 'web-imasd';
   isLoading = false;
-  private authService = inject( AuthService );
+  public authService = inject( AuthService );
   private router = inject( Router );
   private _storeService = inject( StoreService );
 
@@ -24,14 +22,19 @@ export class AppComponent {
     }
 
   public finishedAuthCheck = computed<boolean>( () => {
-    console.log(this.authService.authStatus() )
     if ( this.authService.authStatus() === AuthStatus.checking ) {
       return false;
     }
-
     return true;
   });
 
+  public autorizado = computed<boolean>( () => {
+    if ( this.authService.authStatus() === AuthStatus.authenticated ) {
+      return true;
+    }
+
+    return false;
+  });
 
   public authStatusChangedEffect = effect(() => {
 

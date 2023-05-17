@@ -1,7 +1,7 @@
 import { Subject,delay,filter } from 'rxjs';
 import { Directive, OnDestroy, OnInit, AfterViewInit, EventEmitter, ElementRef, Input ,Output } from '@angular/core';
 @Directive({
-    selector: '[observeVisibility]',
+    selector: '[rctObserveVisibility]',
   })
   export class ObserveVisibilityDirective
     implements OnDestroy, OnInit, AfterViewInit {
@@ -74,13 +74,12 @@ import { Directive, OnDestroy, OnInit, AfterViewInit, EventEmitter, ElementRef, 
   
       this.subject$
         .pipe(delay(this.debounceTime), filter(Boolean))
-        .subscribe(async ({ entry, observer }) => {
+        .subscribe(async ({ entry  }) => {
           const target = entry.target as HTMLElement;
           const isStillVisible = await this.isVisible(target);
   
           if (isStillVisible) {
             this.visible.emit(target);
-           // observer.unobserve(target);
           }
         });
     }

@@ -2,7 +2,7 @@ import { Component, forwardRef, Injector, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControlName, NgControl, NG_VALUE_ACCESSOR, FormGroupDirective, FormControlDirective, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'lib-inputcustomizado',
+  selector: 'rct-inputcustomizado',
   templateUrl: './inputcustomizado.component.html',
   styleUrls: ['./inputcustomizado.component.css'],
   providers: [
@@ -14,12 +14,12 @@ import { ControlValueAccessor, FormControlName, NgControl, NG_VALUE_ACCESSOR, Fo
   ]
 })
 export class InputCustomizadoComponent implements OnInit ,ControlValueAccessor {
-  @Input() myLabel: string = '';
-  counter: number = 0;
-  value: string='';
-  isDisabled: boolean=false;
+  @Input() myLabel = '';
+  counter = 0;
+  value='';
+  isDisabled=false;
   formcontrol:any;
-  onChange = (_:any) => { }
+  onChange = (_:any) => { console.log(1) }
   onTouch = () => { }
   constructor(private inj:Injector) { }
   ngOnInit() {

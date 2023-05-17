@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class AuthRctInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
-        let token = localStorage.getItem('token');
+        const token = localStorage.getItem('token');
         let pontoken = false;
         if (token) {
             pontoken = true;

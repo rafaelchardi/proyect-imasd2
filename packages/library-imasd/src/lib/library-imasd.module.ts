@@ -1,33 +1,41 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { StringtonumberPipe } from './pipes';
-import { ObserveVisibilityDirective, TooltipPopupDirective } from './directivas';
+import {
+  ControlErrorDirective,
+  ObserveVisibilityDirective,
+  TooltipPopupDirective,
+} from './directivas';
 import { InputCustomizadoComponent, LoadingComponent } from './componentes';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { HeaderComponent } from './componentes/header/header.component';
+import { SharedModule } from './shared.module';
+import { MenuComponent } from './componentes/menu/menu.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     StringtonumberPipe,
     TooltipPopupDirective,
     LoadingComponent,
-     InputCustomizadoComponent,ObserveVisibilityDirective
- 
+    InputCustomizadoComponent,
+    ObserveVisibilityDirective,
+    ControlErrorDirective,
+    LoginPageComponent,
+    HeaderComponent,
+    MenuComponent,
   ],
-  imports: [
-   MatSnackBarModule,
-   MatProgressSpinnerModule,
-   FormsModule,
-   ReactiveFormsModule,
-   BrowserAnimationsModule,
-  ],
+  imports: [SharedModule,RouterModule],
   exports: [
     LoadingComponent,
     StringtonumberPipe,
     TooltipPopupDirective,
-    InputCustomizadoComponent,ObserveVisibilityDirective
-  ]
+    InputCustomizadoComponent,
+    ObserveVisibilityDirective,
+    LoginPageComponent,
+    ControlErrorDirective,
+    HeaderComponent,
+    MenuComponent
+  ],
 })
 export class LibraryImasdModule {}
