@@ -4,6 +4,6 @@ import { EventEmitter, Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class StoreService {
-  public isLoading$ = new EventEmitter<boolean>();
+  public isLoading$ = new EventEmitter<boolean>(true);
   
 }

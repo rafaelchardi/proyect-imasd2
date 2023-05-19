@@ -14,9 +14,9 @@ export const appRoutes = [
       loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardModule ),
     },
     {
-      path: 'client',
+      path: 'clien',
        canActivate: [ isAuthenticatedGuard ],
-      loadChildren: () => import('./ventas/client.module').then( m => m.ClientModule ),
+      loadChildren: () => import('./ventas/clien.module').then( m => m.ClientModule ),
     },
     {
       path: '**',

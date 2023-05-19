@@ -16,9 +16,9 @@ export class ClienController {
 
   @Get()
 
-  findAll() {
-    return this.clienService.findAll();
-  }
+ findAll() {
+      return this.clienService.findAll();  
+}
 
   @Get(':id')
 

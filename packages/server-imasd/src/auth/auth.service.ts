@@ -1,4 +1,5 @@
-import { BadRequestException, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
+import { LoginResponse } from 'packages/library-imasd/src/lib/interfaces/login-response.interface';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { JwtService } from '@nestjs/jwt';
 
@@ -6,11 +7,9 @@ import * as bcryptjs from 'bcryptjs';
 
 import { LoginDto } from './dto';
 
-import { User } from './entities/user.entity';
-
 import { JwtPayload } from './interfaces/jwt-payload';
-import { LoginResponse } from './interfaces/login-response';
 import { UserData } from './data/user.data';
+import { User } from 'packages/library-imasd/src/lib/interfaces/user.interface';
 
 @Injectable()
 export class AuthService {
@@ -37,10 +36,10 @@ export class AuthService {
 
     
     const { password:_, ...rest  } = loginDto;
-      
+    user.password='';
     return {
       user: rest,
-      token: this.getJwtToken({ id: user.id }),
+      token: this.getJwtToken({ user }),
     }
   
   }

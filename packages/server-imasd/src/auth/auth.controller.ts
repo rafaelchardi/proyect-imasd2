@@ -3,8 +3,9 @@ import { AuthService } from './auth.service';
 
 import { LoginDto } from './dto';
 import { AuthGuard } from './guards/auth.guard';
-import { LoginResponse } from './interfaces/login-response';
-import { User } from './entities/user.entity';
+
+import { User } from 'packages/library-imasd/src/lib/interfaces/user.interface';
+import { LoginResponse } from 'packages/library-imasd/src/lib/interfaces/login-response.interface';
 
 
 @Controller('auth')
@@ -34,7 +35,7 @@ export class AuthController {
 
     return {
       user,
-      token: this.authService.getJwtToken({ id: user.id })
+      token: this.authService.getJwtToken({ user })
     }
 
   }

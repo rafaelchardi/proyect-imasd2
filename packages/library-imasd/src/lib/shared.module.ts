@@ -8,9 +8,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TranslateModule } from "@ngx-translate/core";
-
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -39,7 +37,7 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     TranslateModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
   ],
 })
 export class SharedModule {}

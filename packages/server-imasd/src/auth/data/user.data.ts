@@ -1,14 +1,15 @@
-import { User, UserEjemplo } from "../entities/user.entity";
+
+import { User, UserDataEjem } from "packages/library-imasd/src/lib/interfaces/user.interface"
 
 export class UserData {
 
 
     findOne({ email }):User {
-        return UserEjemplo
+        return UserDataEjem;
       
     }
     findById(id='0'):User {
-        return UserEjemplo
+        return UserDataEjem
       
     }
 

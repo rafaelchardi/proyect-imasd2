@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ClientRoutingModule } from './client-routing.module';
+import { ClientRoutingModule } from './clien-routing.module';
 
 import {  LibraryImasdModule } from '@imasd/libraryImasd';
-import { ClientComponent } from './client/client.component';
+import { ClienComponent } from './clien/clien.component';
 @NgModule({
   declarations: [
-    ClientComponent
+    ClienComponent
    
   ],
   imports: [

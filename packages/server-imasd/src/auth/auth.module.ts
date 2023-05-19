@@ -11,21 +11,6 @@ import { AuthController } from './auth.controller';
   controllers: [AuthController],
   providers: [AuthService],
   imports: [
-    ConfigModule.forRoot(),
-
-    /* MongooseModule.forFeature([
-      {
-        name: User.name,
-        schema: UserSchema
-      }
-    ]), */
-
-    JwtModule.register({
-      global: true,
-      secret: process.env.JWT_SEED || '123456',
-      signOptions: { expiresIn: '6h' },
-    }),
-
   ]
 })
 export class AuthModule {}

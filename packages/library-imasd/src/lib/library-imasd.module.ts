@@ -12,6 +12,7 @@ import { HeaderComponent } from './componentes/header/header.component';
 import { SharedModule } from './shared.module';
 import { MenuComponent } from './componentes/menu/menu.component';
 import { RouterModule } from '@angular/router';
+import { PrimeSharedModule } from './primeShared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     MenuComponent,
   ],
-  imports: [SharedModule,RouterModule],
+  imports: [SharedModule,RouterModule,PrimeSharedModule],
   exports: [
     LoadingComponent,
     StringtonumberPipe,
