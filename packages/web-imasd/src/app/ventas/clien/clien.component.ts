@@ -10,7 +10,7 @@ import { Clien } from 'packages/library-imasd/src/lib/interfaces/client.interfac
 export class ClienComponent {
   constructor() {
     const clienService = inject( ClienService );
-    clienService.get().subscribe((x:Clien[])=>console.log(x))
+    //clienService.get().subscribe((x:Clien[])=>console.log(x))
 
   }
 }

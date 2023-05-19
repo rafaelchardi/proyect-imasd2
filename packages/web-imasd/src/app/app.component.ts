@@ -19,8 +19,6 @@ export class AppComponent {
     ) {
      
          this._storeService.isLoading$.subscribe((isLoading:boolean) => {
-          console.log('-----------------5------------------');
-          console.log(isLoading);
           this.isLoading = isLoading
     });
     }

@@ -1,8 +1,8 @@
-import { SelectItem } from './../../../../../../node_modules/primeng/api/selectitem.d';
 import { Component,  ViewChildren,  computed,  inject } from '@angular/core';
-import { MainService } from '../../services';
+import { AuthService, MainService } from '../../services';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -13,36 +13,39 @@ import { Router } from '@angular/router';
 export class MenuComponent {
   @ViewChildren('panelmenu') panelmenu!: PanelMenuModule ;
   mainService = inject( MainService );
+  authService = inject( AuthService );
   router = inject( Router );
-  selectItem!:any;
-  itemsMenu = [
-    {
-        label: 'File',
-        icon: 'pi pi-fw pi-file',
-        items: [
-            {
-                label: 'New',
-                icon: 'pi pi-fw pi-plus',
-                command: () => this.navegateTo('/clien')
-                
-            },
-            {
-                label: 'Delete',
-                icon: 'pi pi-fw pi-trash'
-            },
-            {
-                label: 'Export',
-                icon: 'pi pi-fw pi-external-link'
-            }
-        ]
-    }];
-
+  translateService = inject( TranslateService );
+  
+  
   sidebarVisible =  computed( () => this.mainService.menuShow());
-  onHide(){
-    this.mainService.toggleMenu(!this.sidebarVisible());
-  }
+  itemsMenuaux:any =  computed( () => {
+    const menu = this.authService.currentMenu()
+    this.iterateCreateNavegates(menu,'');
+    return menu;
 
-  navegateTo(path:string){
+  } );
+  iterateCreateNavegates(obj:any, stack:any) {
+    for (const property in obj) {
+        if (obj[property]) {
+          if (property == 'label') {
+            obj[property] = this.translateService.instant(obj[property]);
+          }
+          if (typeof obj[property] == "object") {
+                this.iterateCreateNavegates(obj[property], stack + '.' + property);
+            } else {
+                if (property == 'path') {
+                  obj.command =  () => this.navegateTo(obj[property])
+                }
+                
+            }
+        }
+    }
+ }
+ onHide(){
+    this.mainService.toggleMenu(!this.sidebarVisible());
+ }
+ navegateTo(path:string){
     this.router.navigate([path]);  
     this.mainService.toggleMenu(false);
   }

@@ -1,11 +1,13 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, catchError, map, of,  throwError } from 'rxjs';
+import { Observable, catchError, map, of,  take,  throwError } from 'rxjs';
 
 
 import { BASE_URL } from '../inyectables';
 import { AuthStatus, CheckTokenResponse, LoginResponse, User } from '../interfaces';
+import { Menu } from '../interfaces/menu.interface';
+import { MenuService } from './menu.service';
 
 
 
@@ -18,14 +20,17 @@ export class AuthService {
   private readonly baseUrl: string = inject(BASE_URL);
   
   private http = inject( HttpClient );
+    
+  private menuService = inject( MenuService );
 
   private _currentUser = signal<User|null>(null);
   private _authStatus = signal<AuthStatus>( AuthStatus.checking );
+  public _currentMenu = signal<Menu[]|null>(null);
 
   //! Al mundo exterior
   public currentUser = computed( () => this._currentUser() );
   public authStatus = computed( () => this._authStatus() );
-
+  public currentMenu = computed( () => this._currentMenu() );
 
   constructor() {
     this.checkAuthStatus().subscribe();
@@ -41,6 +46,12 @@ export class AuthService {
     this._authStatus.set( AuthStatus.authenticated );
     localStorage.setItem('token', token);
 
+    this.menuService.get().pipe(take(1)).subscribe(x=>{
+      this._currentMenu.set(x)
+      console.log(x);
+    }
+      )
+    
     return true;
   }
 
@@ -84,6 +95,7 @@ export class AuthService {
     localStorage.removeItem('token');
     this._currentUser.set(null);
     this._authStatus.set( AuthStatus.notAuthenticated );
+    this._currentMenu.set(null);
 
   }
 

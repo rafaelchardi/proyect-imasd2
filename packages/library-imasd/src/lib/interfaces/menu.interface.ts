@@ -1,7 +1,8 @@
 export interface Menu {
     id:number;
-    description: string;
-    path: string;
-    children?:Menu[]
+    label: string;
+    icon?: string;
+    path?: string;
+    items?:Menu[]
   }
-  
+    

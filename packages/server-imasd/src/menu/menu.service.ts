@@ -20,17 +20,25 @@ export class MenuService {
      } catch (error) {
       throw new HttpException('Cliente no encontrado',404);
      }
-  }
-  private getMenuByUsse(user:User):Menu[]{
+   }   
+
+ private getMenuByUsse(user:User):Menu[]{
       return [{
           id:1,
-          description: 'clientes',
-          path: '/clien'
+          label: 'sales',
+          icon: 'pi pi-fw pi-file',
+          items:[
+            {
+              id:11,
+              label: 'customers',
+              icon: 'pi pi-fw pi-plus',
+              path:'/clien'
+           }]
         },
         {
           id:2,
-          description: 'clientes 2',
-          path: '/clien'
+          label: 'shopping',
+          icon: 'pi pi-fw pi-file',
         }
       ] 
       

@@ -29,7 +29,6 @@ export class AuthRctInterceptor implements HttpInterceptor {
 
  manejarError( error: HttpErrorResponse ) {
     if (error.status === 401) {
-        console.log(error)
         if (error.error.message == "Token no válido") {
              console.log("Token no válido")
         }    
