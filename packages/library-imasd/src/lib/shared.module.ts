@@ -10,6 +10,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { TranslateModule } from "@ngx-translate/core";
 import { CommonModule } from '@angular/common';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -25,7 +26,7 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     TranslateModule,
     MatToolbarModule,
-    MatIconModule],
+    MatIconModule,MatDialogModule],
   exports: [
     HttpClientModule,
     MatSnackBarModule,
@@ -38,6 +39,7 @@ import { CommonModule } from '@angular/common';
     TranslateModule,
     MatToolbarModule,
     MatIconModule,
+    MatDialogModule
   ],
 })
 export class SharedModule {}

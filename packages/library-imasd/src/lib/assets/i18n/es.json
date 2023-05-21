@@ -1,7 +1,9 @@
 {
     "customers":"Clientes",
+    "close":"Clientes",
     "email":"Email",
     "password":"Password",
     "sales":"Ventas",
+    "selec_option":"Seleccione una opcion",
     "shopping":"Compras"
 }

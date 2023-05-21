@@ -6,7 +6,7 @@ import {
   ObserveVisibilityDirective,
   TooltipPopupDirective,
 } from './directivas';
-import { InputCustomizadoComponent, LoadingComponent } from './componentes';
+import { InputCustomizadoComponent, LoadingComponent, PrintPreviewComponent } from './componentes';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { SharedModule } from './shared.module';
@@ -25,6 +25,7 @@ import { PrimeSharedModule } from './primeShared.module';
     LoginPageComponent,
     HeaderComponent,
     MenuComponent,
+    PrintPreviewComponent
   ],
   imports: [SharedModule,RouterModule,PrimeSharedModule],
   exports: [
@@ -36,7 +37,8 @@ import { PrimeSharedModule } from './primeShared.module';
     LoginPageComponent,
     ControlErrorDirective,
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    PrintPreviewComponent
   ],
 })
 export class LibraryImasdModule {}

@@ -31,12 +31,13 @@
           "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
           "node_modules/primeng/resources/primeng.min.css",
           "node_modules/primeicons/primeicons.css",
-          "node_modules/@imasd/libraryImasd/src/lib/styles/index.scss"
+          "node_modules/@imasd/libraryImasd/src/lib/styles/index.scss",
+          "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
         ],
         "scripts": [
           "node_modules/jquery/dist/jquery.min.js",
           "node_modules/@popperjs/core/dist/umd/popper.min.js",
-          "node_modules/bootstrap/dist/js/bootstrap.min.js",
+          "node_modules/bootstrap/dist/js/bootstrap.min.js"
         ]
       },
       "configurations": {

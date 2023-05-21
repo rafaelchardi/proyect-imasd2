@@ -4,7 +4,6 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-
 @Component({
   selector: 'rct-menu',
   templateUrl: './menu.component.html',
@@ -19,7 +18,7 @@ export class MenuComponent {
   
   
   sidebarVisible =  computed( () => this.mainService.menuShow());
-  itemsMenuaux:any =  computed( () => {
+  itemsMenu:any =  computed( () => {
     const menu = this.authService.currentMenu()
     this.iterateCreateNavegates(menu,'');
     return menu;
@@ -49,5 +48,4 @@ export class MenuComponent {
     this.router.navigate([path]);  
     this.mainService.toggleMenu(false);
   }
-
 }
