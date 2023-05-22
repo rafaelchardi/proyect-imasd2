@@ -1,22 +1,23 @@
-import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable} from '@angular/core';
-import { catchError, throwError } from 'rxjs';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import { snackBarComponent } from '../componentes';
-
-
+import { HttpErrorResponse } from "@angular/common/http";
+import { Injectable, inject } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable({
-  providedIn: 'root',
-})
-export class HttpErrorResponseInterceptor implements HttpInterceptor {
-  constructor(private _snackBar: MatSnackBar){
-  }
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    providedIn: 'root'
+  })
+  export class ErrorService {
+  
+   
+    private _snackBar = inject( MatSnackBar );
     
-    return next.handle(req).pipe(
-      catchError((error) => {
+    public customError(error:any){
+         console.log(error);
+    }
+
+
+    public httpError(error:any){
         let title = ''
+
         if (error instanceof HttpErrorResponse) {
             title = 'Client-side error : ' + error.error.message;
           } else {
@@ -36,8 +37,7 @@ export class HttpErrorResponseInterceptor implements HttpInterceptor {
               },
             });  */
           }
-        return throwError(() => error);
-      })
-    );
+  
+    }
   }
-}
+  

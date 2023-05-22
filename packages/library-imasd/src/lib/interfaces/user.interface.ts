@@ -1,3 +1,4 @@
+import { Roles } from "../enum";
 
 
 export interface User {
@@ -6,15 +7,15 @@ export interface User {
   name?:     string;
   isActive?: boolean;
   password?:     string;
-  roles?:    string[];
+  roles?:    Roles[];
 }
 
 
-export const UserDataEjem =  {
+export const UserDataEjem:User =  {
   id:      1,
   email:    "email",
   name:    "name",
   isActive: true,
   password:  "passs",
-  roles:    ['ADMIN','CLIEN','USER']
-}
+  roles:[Roles.ADMIN,Roles.USER]
+}   

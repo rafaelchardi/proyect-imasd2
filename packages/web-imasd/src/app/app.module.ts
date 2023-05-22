@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
@@ -16,9 +15,10 @@ import {
   HttpClient,
 } from '@angular/common/http';
 import {
-  AuthRctInterceptor,
+  AuthInterceptor,
   AuthService,
   BASE_URL,
+  CustomErrorHandler,
   HttpErrorResponseInterceptor,
   LibraryImasdModule,
   LoadingInterceptor,
@@ -50,13 +50,18 @@ export function createTranslateLoader(http: HttpClient) {
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthRctInterceptor,
+      useClass: AuthInterceptor,
       multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorResponseInterceptor,
       multi: true,
+    },
+    {
+      provide: ErrorHandler,
+      useClass: CustomErrorHandler,
+      
     },
     {
       provide: HTTP_INTERCEPTORS,

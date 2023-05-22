@@ -1,32 +1,41 @@
-import { Clien } from 'packages/library-imasd/src/lib/interfaces/client.interface';
 import { Injectable } from '@nestjs/common';
 import { CreateClienDto } from './dto/create-clien.dto';
 import { UpdateClienDto } from './dto/update-clien.dto';
 import { delay } from '../shared/utils';
+import { Clien } from './clien.class';
 
 @Injectable()
 export class ClienService {
-  create(createClienDto: CreateClienDto) {
-    return 'This action adds a new clien';
-  }
+  create(createClienDto: CreateClienDto):Promise<Clien>  {
+    return Promise.resolve({
+      id : 13,
+      name: 'cliente creado',
+        }
+   );
+ }
 
-findAll():Clien[] {
-   return[{
+findAll():Promise<Clien[]>{
+   return Promise.resolve([{
       id : 1,
       name: 'rafael',
         },
         {
           id : 2,
           name: 'pepe',
-        }];
+        }]
+  );
 }
+findOne(id: number):Promise<Clien> {
+    return Promise.resolve({
+      id : 1,
+      name: 'rafael',
+        }
+ );
 
-  findOne(id: number) {
-    return `This action returns a #${id} clien`;
   }
 
-  update(id: number, updateClienDto: UpdateClienDto) {
-    return `This action updates a #${id} clien`;
+  update(id: number, updateClienDto: UpdateClienDto):Promise<Clien> {
+    return Promise.resolve(updateClienDto);
   }
 
   remove(id: number) {

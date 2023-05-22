@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 
 import { BASE_URL } from '../inyectables';
-import { Clien } from '../interfaces/client.interface';
+import { Clien } from '../interfaces/clien/clien.inteface';
 
 @Injectable({
   providedIn: 'root'

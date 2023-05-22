@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { ClienService } from '@imasd/libraryImasd';
-import { Clien } from 'packages/library-imasd/src/lib/interfaces/client.interface';
+import { Component, computed, inject } from '@angular/core';
+import { AuthService, ClienService, Roles } from '@imasd/libraryImasd';
 
 @Component({
   selector: 'app-clien',
@@ -8,6 +7,9 @@ import { Clien } from 'packages/library-imasd/src/lib/interfaces/client.interfac
   styleUrls: ['./clien.component.scss'],
 })
 export class ClienComponent {
+  authService = inject( AuthService );
+  roles = Roles; 
+  currentUser =  computed( () => this.authService.currentUser());
   constructor() {
     const clienService = inject( ClienService );
     //clienService.get().subscribe((x:Clien[])=>console.log(x))

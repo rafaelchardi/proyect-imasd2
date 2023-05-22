@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root',
   })
-export class AuthRctInterceptor implements HttpInterceptor {
+export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         const token = localStorage.getItem('token');

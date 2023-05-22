@@ -6,9 +6,11 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { User } from 'packages/library-imasd/src/lib/interfaces/user.interface';
 import { LoginResponse } from 'packages/library-imasd/src/lib/interfaces/login-response.interface';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 
 @Controller('auth')
+@ApiTags('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
@@ -27,6 +29,7 @@ export class AuthController {
 
 
   // LoginResponse
+  @ApiBearerAuth('defaultBearerAuth')
   @UseGuards( AuthGuard )
   @Get('check-token')
   checkToken( @Request() req: Request ): LoginResponse {
