@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { CreateClienDto } from './dto/create-clien.dto';
 import { UpdateClienDto } from './dto/update-clien.dto';
-import { delay } from '../shared/utils';
 import { Clien } from './clien.class';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ClienService {
+
+  constructor(
+    @InjectRepository(Clien)
+    private clienRepository: Repository<Clien>,
+  ) {}
+
   create(createClienDto: CreateClienDto):Promise<Clien>  {
     return Promise.resolve({
       id : 13,
@@ -15,30 +22,16 @@ export class ClienService {
  }
 
 findAll():Promise<Clien[]>{
-   return Promise.resolve([{
-      id : 1,
-      name: 'rafael',
-        },
-        {
-          id : 2,
-          name: 'pepe',
-        }]
-  );
+  return this.clienRepository.find();
 }
 findOne(id: number):Promise<Clien> {
-    return Promise.resolve({
-      id : 1,
-      name: 'rafael',
-        }
- );
+  return this.clienRepository.findOneBy({ id });
+}
+ update(id: number, updateClienDto: UpdateClienDto):Promise<Clien> {
+   return Promise.resolve(updateClienDto);
+ }
 
-  }
-
-  update(id: number, updateClienDto: UpdateClienDto):Promise<Clien> {
-    return Promise.resolve(updateClienDto);
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} clien`;
+  async remove(id: number): Promise<void> {
+    await this.clienRepository.delete(id);
   }
 }

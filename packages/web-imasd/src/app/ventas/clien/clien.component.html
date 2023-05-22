@@ -1,16 +1,8 @@
 <p>client works!</p>
-<p>{{currentUser() | json }}</p>
-
-<ng-container #t="rctHasRoles" [rctHasRoles] ="[roles.EDITOR]" [hasRolesFor]="currentUser()">
-     <p *ngIf="t.visible" > t.visible only </p>
-</ng-container>
 <p *rctIfRoles ="[roles.ADMIN]"  > EDITOR   client works!</p>
-<p>client works!</p>
-<p *rctIfRoles ="[roles.ADMIN]"  > ADMIN   client works!</p>
-<p>client works!</p>
-<p>client works!</p>
-<p>client works!</p>
-<p>client works!</p>
-<p>client works!</p>
-<p>client works!</p>
+
+ <div *ngFor="let item of clientes"> 
+ {{item.id}}
+ {{item.name }}
+ </div>
 
