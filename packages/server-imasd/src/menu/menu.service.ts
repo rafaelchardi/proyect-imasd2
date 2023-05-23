@@ -28,7 +28,7 @@ export class MenuService {
       return [{
           id:1,
           label: 'sales',
-          icon: 'fa fa-coffee',
+          icon: 'pi pi-fw pi-plus',
           items:[
             {
               id:11,

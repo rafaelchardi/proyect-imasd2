@@ -1,19 +1,21 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, OnInit, computed, effect, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, AuthStatus, StoreService } from '@imasd/libraryImasd';
 import { FaConfig } from '@fortawesome/angular-fontawesome';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent  implements OnInit {
   title = 'web-imasd';
   isLoading = false;
   public authService = inject( AuthService );
   private router = inject( Router );
   private _storeService = inject( StoreService );
-
+  private httpClient  = inject(  HttpClient);
+  
   constructor(
     protected faConfig: FaConfig,
     ) {
@@ -59,6 +61,22 @@ export class AppComponent {
 
 
   });
+
+  ngOnInit() {
+    const configLocal = localStorage.getItem('version');
+    const headers = new HttpHeaders()
+      .set('Cache-Control', 'no-cache')
+      .set('Pragma', 'no-cache'); 
+    this.httpClient
+      .get<{ version: string }>("/assetslib/version.json", {headers})
+      .subscribe(config => {
+       if (config.version !== configLocal) {
+          location.reload(); 
+          localStorage.setItem('version', config.version)
+       }
+    });
+
+  }
 
 
 }
