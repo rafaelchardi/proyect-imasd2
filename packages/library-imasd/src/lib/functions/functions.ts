@@ -12,5 +12,14 @@ const getFormValidationErrors = (form: FormGroup) => {
     }
   });
 };
+const isEmpty = (variable: any): boolean => {
+  return variable == '' || variable == 'undefined' || variable == null;
+}
+const isEmptyReturn = (variable: any,valueIfEmpty:any='',valueIfNotEmpty:any=''): boolean => {
+   if (isEmpty(variable)) {
+     return valueIfEmpty
+   } else return valueIfNotEmpty
+  
+}
 
-export { getFormValidationErrors };
+export { getFormValidationErrors,isEmpty,isEmptyReturn };

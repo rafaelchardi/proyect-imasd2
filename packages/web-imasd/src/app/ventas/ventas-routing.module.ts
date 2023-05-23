@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienComponent } from './clien/clien.component';
+import { contentRoles } from '@imasd/libraryImasd';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'clien',
     component: ClienComponent,
+    canActivate:[contentRoles],
     // children: []
   }
 ];
@@ -14,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ClientRoutingModule { }
+export class VentasRoutingModule { }

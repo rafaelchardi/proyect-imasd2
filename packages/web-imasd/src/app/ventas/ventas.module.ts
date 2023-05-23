@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ClientRoutingModule } from './clien-routing.module';
+import { VentasRoutingModule } from './ventas-routing.module';
 
 import {  LibraryImasdModule } from '@imasd/libraryImasd';
 import { ClienComponent } from './clien/clien.component';
@@ -12,8 +12,8 @@ import { ClienComponent } from './clien/clien.component';
   ],
   imports: [
     CommonModule,
-    ClientRoutingModule,
+    VentasRoutingModule,
     LibraryImasdModule
   ]
 })
-export class ClientModule { }
+export class VentasModule { }

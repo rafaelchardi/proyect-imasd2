@@ -11,10 +11,8 @@ export class ControlErrorDirective implements AfterViewInit,OnDestroy {
   controldecambios!:Subscription;
   ///-----------------------------------------------------------------------------------------------------------------------------------------------
   constructor(private host: MatFormField,
-             /* private el:ElementRef, private renderer:Renderer2 */) {
-        /*       console.log(el);
-              console.log(renderer);
- */
+) {
+        
   }
 ///-----------------------------------------------------------------------------------------------------------------------------------------------
   ngOnDestroy(): void {

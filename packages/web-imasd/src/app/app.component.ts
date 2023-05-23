@@ -1,7 +1,7 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, AuthStatus, StoreService } from '@imasd/libraryImasd';
-
+import { FaConfig } from '@fortawesome/angular-fontawesome';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,9 +15,9 @@ export class AppComponent {
   private _storeService = inject( StoreService );
 
   constructor(
-    
+    protected faConfig: FaConfig,
     ) {
-     
+      faConfig.defaultPrefix = 'fal';
          this._storeService.isLoading$.subscribe((isLoading:boolean) => {
           this.isLoading = isLoading
     });

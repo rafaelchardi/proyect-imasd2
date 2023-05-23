@@ -48,7 +48,7 @@ export class AuthService {
 
     this.menuService.get().pipe(take(1)).subscribe(x=>{
       this._currentMenu.set(x)
-      console.log(x);
+      
     }
       )
     

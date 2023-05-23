@@ -1,0 +1,24 @@
+.mat-mdc-snack-bar-container {
+  &.snackbar-error {
+    --mdc-snackbar-container-color:  rgb(235, 124, 124);;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+  &.snackbar-warning {
+    --mdc-snackbar-container-color:  rgb(19, 18, 18);;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+  &.nackbar-element-create {
+    --mdc-snackbar-container-color:  rgb(130, 224, 146);;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+  &.nackbar-element-delete {
+    --mdc-snackbar-container-color:  rgb(134, 193, 235);;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+  
+  
+}

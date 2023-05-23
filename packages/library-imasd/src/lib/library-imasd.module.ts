@@ -1,3 +1,4 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgModule } from '@angular/core';
 
 import { StringtonumberPipe } from './pipes';
@@ -31,7 +32,7 @@ import { HasRolesDirective } from './directivas/hasRoles.directive';
     HasRolesDirective,
     IfRolesDirective
   ],
-  imports: [SharedModule,RouterModule,PrimeSharedModule],
+  imports: [SharedModule,RouterModule,PrimeSharedModule,FontAwesomeModule],
   exports: [
     LoadingComponent,
     StringtonumberPipe,

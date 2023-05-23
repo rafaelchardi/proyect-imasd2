@@ -4,6 +4,17 @@ import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
+// iconos
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+
+
+
+ import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fal } from '@fortawesome/pro-light-svg-icons';
+
+
 import {
   TranslateLoader,
   TranslateModule,
@@ -36,6 +47,7 @@ export function createTranslateLoader(http: HttpClient) {
     CommonModule,
     BrowserAnimationsModule,
     LibraryImasdModule,
+    FontAwesomeModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     TranslateModule.forRoot({
       loader: {
@@ -72,7 +84,8 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService,library: FaIconLibrary) {
     this.translate.setDefaultLang('es');
+      library.addIconPacks(fal,fab,far,fas);
   }
 }
