@@ -4,6 +4,10 @@ export default {
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   coverageDirectory: '../../coverage/packages/web-imasd',
+  coverageReporters: ["clover", "json", "lcov", "text", ['text-summary', { skipFull: true }]],
+  testResultsProcessor: "jest-sonar-reporter",
+  reporters: ['default',  'jest-sonar'],
+verbose: true,
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
