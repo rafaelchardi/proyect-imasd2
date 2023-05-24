@@ -1,25 +1,18 @@
-import { Directive, AfterViewInit, OnDestroy } from '@angular/core';
+import { Directive, AfterViewInit, DestroyRef, inject } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
-import { Subscription } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 
 @Directive({
   selector: '[rctControlError]',
 })
-export class ControlErrorDirective implements AfterViewInit,OnDestroy {
+export class ControlErrorDirective implements AfterViewInit {
 
-  controldecambios!:Subscription;
+  private readonly destroy: DestroyRef = inject(DestroyRef);
   ///-----------------------------------------------------------------------------------------------------------------------------------------------
   constructor(private host: MatFormField,
 ) {
         
-  }
-///-----------------------------------------------------------------------------------------------------------------------------------------------
-  ngOnDestroy(): void {
-    if(this.controldecambios) {
-      this.controldecambios.unsubscribe();
-    }
-
   }
   ///-----------------------------------------------------------------------------------------------------------------------------------------------
   ngAfterViewInit(): void {
@@ -27,7 +20,8 @@ export class ControlErrorDirective implements AfterViewInit,OnDestroy {
     if (!this.host._control)   { console.log('control de errores , no se encuentra el host._control') ;    return;    }
     if (!this.host._control.ngControl)  { console.log('control de errores , no se encuentra el host._control.ngControl') ;    return;    }
 
-    this.controldecambios!=this.host._control.ngControl.valueChanges?.subscribe(()=>{
+   this.host._control.ngControl.valueChanges?.pipe(takeUntilDestroyed(this.destroy))
+    .subscribe(()=>{
        const label = this.host._elementRef.nativeElement.querySelectorAll('label[idslabel="true"]');
        if (label.length>0) {
         this.host._elementRef.nativeElement.removeChild(label[0]);
