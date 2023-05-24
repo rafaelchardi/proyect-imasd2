@@ -22,7 +22,4 @@ const isEmptyReturn = (variable: any,valueIfEmpty:any='',valueIfNotEmpty:any='')
   
 }
 
-/*   value === null ||  value === undefined ||  value === 0 ||  value === false ||  value === NaN ||  value === "" */
-const  isFalse = ( valor: any ) => !valor;
-
-export { getFormValidationErrors,isEmpty,isEmptyReturn,isFalse };
+export { getFormValidationErrors,isEmpty,isEmptyReturn };
