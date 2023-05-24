@@ -1,6 +1,6 @@
-import { Component,  ViewChildren,  computed,  inject } from '@angular/core';
+import { Component,   computed,  inject } from '@angular/core';
 import { AuthService, MainService } from '../../services';
-import { PanelMenuModule } from 'primeng/panelmenu';
+
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Menu } from '../../interfaces/menu.interface';
@@ -13,7 +13,6 @@ import { isEmpty } from '../../functions';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
-  @ViewChildren('panelmenu') panelmenu!: PanelMenuModule ;
   mainService = inject( MainService );
   authService = inject( AuthService );
   router = inject( Router );

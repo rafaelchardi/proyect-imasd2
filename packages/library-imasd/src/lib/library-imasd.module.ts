@@ -5,6 +5,7 @@ import { StringtonumberPipe } from './pipes';
 import {
   ControlErrorDirective,
   IfRolesDirective,
+  NumbersOnlyDirective,
   ObserveVisibilityDirective,
   TooltipPopupDirective,
 } from './directivas';
@@ -16,7 +17,7 @@ import { MenuComponent } from './componentes/menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { PrimeSharedModule } from './primeShared.module';
 import { HasRolesDirective } from './directivas/hasRoles.directive';
-
+import { CharactersOnlyDirective } from './directivas/characters-only.directive';
 @NgModule({
   declarations: [
     StringtonumberPipe,
@@ -30,7 +31,9 @@ import { HasRolesDirective } from './directivas/hasRoles.directive';
     MenuComponent,
     PrintPreviewComponent,
     HasRolesDirective,
-    IfRolesDirective
+    IfRolesDirective,
+    NumbersOnlyDirective,
+    CharactersOnlyDirective
   ],
   imports: [SharedModule,RouterModule,PrimeSharedModule,FontAwesomeModule],
   exports: [
@@ -45,7 +48,9 @@ import { HasRolesDirective } from './directivas/hasRoles.directive';
     MenuComponent,
     PrintPreviewComponent,
     HasRolesDirective,
-    IfRolesDirective
+    IfRolesDirective,
+    NumbersOnlyDirective,
+    CharactersOnlyDirective,
   ],
 })
 export class LibraryImasdModule {}
