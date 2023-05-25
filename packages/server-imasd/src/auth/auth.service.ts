@@ -35,7 +35,7 @@ export class AuthService {
     }
 
     
-    const { password:_, ...rest  } = loginDto;
+    const { password:_, ...rest  } = user;
     user.password='';
     return {
       user: rest,

@@ -1,6 +1,5 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component,  computed, inject } from '@angular/core';
 import { AuthService, Clien, ClienService, Roles } from '@imasd/libraryImasd';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-clien',
@@ -8,13 +7,13 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./clien.component.scss'],
 })
 export class ClienComponent {
-  authService = inject( AuthService );
+  _authService = inject( AuthService );
   roles = Roles; 
-  currentUser =  computed( () => this.authService.currentUser());
+  currentUser =  computed( () => this._authService.currentUser());
   clientes:Clien[]=[];
   constructor() {
-    const clienService = inject( ClienService );
-    clienService.get().subscribe((x:Clien[])=>this.clientes=x)
+    const _clienService = inject( ClienService );
+    _clienService.get().subscribe((x:Clien[])=>this.clientes=x)
 
   }
 }
