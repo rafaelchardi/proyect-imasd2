@@ -1,7 +1,9 @@
-import { isAuthenticatedGuard, isNotAuthenticatedGuard } from '@imasd/libraryImasd';
+import { Routes } from '@angular/router';
+import { contentRoles, isAuthenticatedGuard, isNotAuthenticatedGuard } from '@imasd/libraryImasd';
 
 
-export const appRoutes = [
+export const appRoutes :Routes = [
+
 
     {
       path: 'auth',
@@ -15,7 +17,8 @@ export const appRoutes = [
     },
     {
       path: 'sales',
-       canActivate: [ isAuthenticatedGuard ],
+      canActivate: [ isAuthenticatedGuard ,contentRoles ],
+      canActivateChild:[contentRoles],
       loadChildren: () => import('./ventas/ventas.module').then( m => m.VentasModule ),
     },
     {

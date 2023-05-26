@@ -1,8 +1,15 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateClienDto } from './create-clien.dto';
-import { ApiProperty } from '@nestjs/swagger';
+import {  ApiProperty } from '@nestjs/swagger';
+
+import { Column } from 'typeorm';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class UpdateClienDto  {
     @ApiProperty()
-    name?: string;
+    @Column()
+    @IsString()
+    @IsNotEmpty()
+     name?: string;
+ 
+     @Column({ default: false })
+     isActive?: boolean;  
 }

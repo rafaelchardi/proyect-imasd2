@@ -1,3 +1,4 @@
 export enum ResponseHtmlCustoms {
-  DELETEOK = 280
+  DELETEOK = 280,
+  UPDATEOK = 281
   }

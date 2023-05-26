@@ -54,11 +54,11 @@ export class MenuComponent {
  }
  navegateTo(path:string,item:Menu){
   
-   let navegate = true; 
-   if (!isEmpty(item?.roles)) {
+   let navegate = false; 
+   if (!isEmpty(item?.roles) && ( (item?.roles?.length || 0) > 0)) {
       if (this.currentUser()?.roles?.some((role) => item.roles?.includes(role))) navegate = true;
           else navegate = false;
-    }
+      }
       if (navegate) {
       this.router.navigate([path], { state: { roles: JSON.stringify(item.roles) } });
 
