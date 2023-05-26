@@ -1,12 +1,22 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { PaginationResultInterface } from './pagination.results.interface';
 
+
 export class Pagination<PaginationEntity> {
+  @ApiProperty( {type: []
+                 }) 
   public results: PaginationEntity[];
+  @ApiProperty() 
   public page_total: number;
+  @ApiProperty() 
   public total: number;
+  @ApiProperty() 
   public total_pages: number;
+  @ApiProperty() 
   public actual_page: number;
+  @ApiProperty() 
   public page_previos: number;
+  @ApiProperty() 
   public page_next: number;
   
   constructor(paginationResults: PaginationResultInterface<PaginationEntity>,limit:number,actualpage:number) {

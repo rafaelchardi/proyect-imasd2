@@ -4,14 +4,14 @@ import { IsNumber, IsOptional, Min } from "class-validator";
 
 export class PaginationQuery  {
     
-    @ApiProperty()
+    @ApiProperty({required:false})
     @IsOptional()
     @IsNumber()
     @Type(() => Number)
     @Min(1)
     limit?:string;
 
-    @ApiProperty()
+    @ApiProperty({required:false})
     @IsOptional()
     @IsNumber()
     @Type(() => Number)

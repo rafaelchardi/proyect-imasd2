@@ -3,7 +3,7 @@ import { IsOptional  } from 'class-validator';
 import { PaginationQuery } from '../../classes/pagination-query.class';
 
 export class QueryClienDto  extends PaginationQuery {
-    @ApiProperty()
+    @ApiProperty({required:false})
     @IsOptional()
     
     name?: string;
